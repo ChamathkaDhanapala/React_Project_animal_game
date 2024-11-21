@@ -4,6 +4,7 @@ import { animals } from '../AnimalsDb';
 const AnimalGame = () => {
     const [randomAnimal, setRandomAnimal] = useState(animals[Math.floor(Math.random() * animals.length)]);
     const [result, setResult] = useState('');
+    const [view, setView] = useState('grid');
 
     const handleChoice = (selectedAnimalName) => {
         if (selectedAnimalName === randomAnimal.name) {
@@ -15,26 +16,44 @@ const AnimalGame = () => {
 
     return (
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
-            <h1>Animal Matching Game</h1>
-            <h2>Find: {randomAnimal.name}</h2>
+            <table border={'1'}>
+                <tr>
+                    <td colSpan={'3'}>
+                        <h1>Animal Matching Game</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                            <h3>Result: {result}</h3>
+                    </td>
+                    <td>
+                    <h3>Animal Name: {randomAnimal.name}</h3>
+                    </td>
+                    <td>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px', marginTop: '20px' }}>
+                            {animals.map((animal, index) => (
+                                <img
+                                    key={index}
+                                    src={`/assests/images/${animal.img}`}
+                                    alt={animal.name}
+                                    style={{ width: '100px', height: '100px', cursor: 'pointer', border: '1px solid #ccc', borderRadius: '8px' }}
+                                    onClick={() => handleChoice(animal.name)}
+                                />
+                            ))}
+                        </div>
+                    </td>
+                    </tr>
+                
+                
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px', marginTop: '20px' }}>
-                {animals.map((animal, index) => (
-                    <img
-                        key={index}
-                        src={`path-to-images/${animal.img}`} // Replace with the correct path
-                        alt={animal.name}
-                        style={{ width: '100px', cursor: 'pointer' }}
-                        onClick={() => handleChoice(animal.name)}
-                    />
-                ))}
-            </div>
 
-            <div style={{ marginTop: '20px' }}>
-                <h3>Result: {result}</h3>
-            </div>
+
+
+
+            </table>
         </div>
     );
 };
+
 
 export default AnimalGame;
