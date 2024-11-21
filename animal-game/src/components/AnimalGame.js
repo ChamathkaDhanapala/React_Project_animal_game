@@ -19,37 +19,32 @@ const AnimalGame = () => {
             <table border={'1'}>
                 <tr>
                     <td colSpan={'3'}>
-                        <h1>Animal Matching Game</h1>
+                        <h1>ANIMAL MATCHING GAME</h1>
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                            <h3>Result: {result}</h3>
+                    <td className='wide-cell'>
+                        <h3>Result: {result}</h3>
                     </td>
                     <td>
-                    <h3>Animal Name: {randomAnimal.name}</h3>
+                        <h3>Animal Name: {randomAnimal.name}</h3>
                     </td>
-                    <td>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px', marginTop: '20px' }}>
-                            {animals.map((animal, index) => (
-                                <img
-                                    key={index}
-                                    src={`/assests/images/${animal.img}`}
-                                    alt={animal.name}
-                                    style={{ width: '100px', height: '100px', cursor: 'pointer', border: '1px solid #ccc', borderRadius: '8px' }}
-                                    onClick={() => handleChoice(animal.name)}
-                                />
-                            ))}
-                        </div>
-                    </td>
+                        <tr>
+                        <td><h3>Select the Animal</h3>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px', marginTop: '20px' }}>
+                                {animals.map((animal, index) => (
+                                    <img
+                                        key={index}
+                                        src={`/assests/images/${animal.img}`}
+                                        alt={animal.name}
+                                        style={{ width: '100px', height: '100px', cursor: 'pointer', border: '1px solid #ccc', borderRadius: '8px' }}
+                                        onClick={() => handleChoice(animal.name)}
+                                    />
+                                ))}
+                            </div>
+                        </td>
                     </tr>
-                
-                
-
-
-
-
-
+                </tr>
             </table>
         </div>
     );
