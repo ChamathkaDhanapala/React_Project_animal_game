@@ -12,13 +12,48 @@ table {
   text-align: center;
 }
 
-td, th {
-  border: 3px solid burlywood;
-  padding: 10px;
-  text-align: start;
+th {
+  color: black;
+  padding: 15px;
+  font-size: 18px;
+  border: 1px solid burlywood;
+  text-align: center;
 }
 
-.wide-cell {
+td {
+  border: 1px solid burlywood;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.wide-cell{
   width: 150px;
+}
+
+.result-win {
+  
+  font-weight: bold;
+  color: orange;
+  width: 150px;
+}
+
+.result-lose {
+  color: orange;
+  font-weight: bold;
+  width: 150px;
+}
+
+img{
+  margin-top: 20px;
+  margin-left: 5px;
+  border: 2px solid blue; 
+  border-radius: 8px; 
+  padding: 5px; 
+  margin: 10px; 
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
 }
 

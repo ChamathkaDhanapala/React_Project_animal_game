@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { animals } from '../AnimalsDb';
 
 const AnimalGame = () => {
-    const [randomAnimal, setRandomAnimal] = useState(animals[Math.floor(Math.random() * animals.length)]);
+    const [randomAnimal] = useState(animals[Math.floor(Math.random() * animals.length)]);
     const [result, setResult] = useState('');
-    const [view, setView] = useState('grid');
+
 
     const handleChoice = (selectedAnimalName) => {
         if (selectedAnimalName === randomAnimal.name) {
@@ -18,26 +18,33 @@ const AnimalGame = () => {
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
             <table border={'1'}>
                 <tr>
-                    <td colSpan={'3'}>
+                    <th colSpan={'3'}>
                         <h1>ANIMAL MATCHING GAME</h1>
-                    </td>
+                    </th>
                 </tr>
                 <tr>
                     <td className='wide-cell'>
-                        <h3>Result: {result}</h3>
+                        <span style={{ color: 'black', fontWeight: 'bold' }}>Result:</span>{' '}
+                        <span className={result === 'Win' ? 'result-win' : 'result-lose'}>
+                            {result}
+                        </span>
                     </td>
                     <td>
-                        <h3>Animal Name: {randomAnimal.name}</h3>
+                        <h3>
+                            <span style={{ color: 'black', fontWeight: 'bold' }}>Animal Name:</span>{' '}
+                            <span style={{ color: 'orange', fontWeight: 'bold' }}>{randomAnimal.name}</span>
+                        </h3>
+
                     </td>
-                        <tr>
+                    <tr>
                         <td><h3>Select the Animal</h3>
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px', marginTop: '20px' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px', marginTop: '0px', backgroundColor: 'lightblue', borderTop: '10px', }}>
                                 {animals.map((animal, index) => (
                                     <img
                                         key={index}
                                         src={`/assests/images/${animal.img}`}
                                         alt={animal.name}
-                                        style={{ width: '100px', height: '100px', cursor: 'pointer', border: '1px solid #ccc', borderRadius: '8px' }}
+                                        style={{ width: '100px', height: '100px', cursor: 'pointer', border: '1px solid #ccc', borderRadius: '8px', }}
                                         onClick={() => handleChoice(animal.name)}
                                     />
                                 ))}
